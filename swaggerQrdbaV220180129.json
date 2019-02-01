@@ -1,0 +1,1041 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "The Qordoba API provides secure programmatic access to everything available on our web platform using industry standard JSON for input and output of richly structured data. Organized around REST, our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients.",
+    "version" : "2",
+    "title" : "QordobaAPI",
+    "termsOfService" : "",
+    "license" : {
+      "name" : "Terms of Service",
+      "url" : "https://www.qordoba.com/terms"
+    }
+  },
+  "host" : "api.qordoba.com",
+  "basePath" : "/v2",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/ping" : {
+      "get" : {
+        "tags" : [ "Information" ],
+        "summary" : "ping api",
+        "description" : "",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "$ref" : "#/definitions/OK"
+            }
+          }
+        }
+      }
+    },
+    "/countries" : {
+      "get" : {
+        "tags" : [ "Information" ],
+        "summary" : "list countries",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/languages" : {
+      "get" : {
+        "tags" : [ "Information" ],
+        "summary" : "list languages",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/organizations/team" : {
+      "get" : {
+        "tags" : [ "Organization" ],
+        "summary" : "list team",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/projects/list" : {
+      "get" : {
+        "tags" : [ "Project" ],
+        "summary" : "list projects",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/projects/detail" : {
+      "get" : {
+        "tags" : [ "Project" ],
+        "summary" : "show project details",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/projects/status" : {
+      "get" : {
+        "tags" : [ "Project" ],
+        "summary" : "show project status",
+        "parameters" : [ {
+          "name" : "language",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/projects/workflow" : {
+      "get" : {
+        "tags" : [ "Project" ],
+        "summary" : "show project workflow",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/list" : {
+      "post" : {
+        "tags" : [ "File" ],
+        "summary" : "list files",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "languageId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/empty object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/types" : {
+      "get" : {
+        "tags" : [ "File" ],
+        "summary" : "list file types",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/export" : {
+      "post" : {
+        "tags" : [ "File" ],
+        "summary" : "export files",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fileIds",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "targetLanguageIds",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/upload" : {
+      "post" : {
+        "tags" : [ "File" ],
+        "summary" : "upload file",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "type",
+          "in" : "query",
+          "required" : true,
+          "type" : "string",
+          "x-example" : "JSON"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/update" : {
+      "post" : {
+        "tags" : [ "File" ],
+        "summary" : "update file",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fileId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/segments/list" : {
+      "get" : {
+        "tags" : [ "File" ],
+        "summary" : "list file segments",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "filter",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "languageId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fileId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/segments/show" : {
+      "get" : {
+        "tags" : [ "File" ],
+        "summary" : "show file segment",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "languageId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fileId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "segmentId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/segments/update" : {
+      "put" : {
+        "tags" : [ "File" ],
+        "summary" : "update file segments",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "languageId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fileId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "segmentId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/files/value_by_key" : {
+      "get" : {
+        "tags" : [ "File" ],
+        "summary" : "value by key",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "filter",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "searchCondition",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "searchTarget",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "searchReplace",
+          "in" : "query",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "matchCase",
+          "in" : "query",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "wholeWord",
+          "in" : "query",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "projectId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "languageId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "fileId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "milestoneId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/tms/list" : {
+      "get" : {
+        "tags" : [ "Translation Memory" ],
+        "summary" : "list translation memories",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "orderType",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "order",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "language",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/tms/show" : {
+      "get" : {
+        "tags" : [ "Translation Memory" ],
+        "summary" : "show translation memory",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "tmId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/tms/upload" : {
+      "post" : {
+        "tags" : [ "Translation Memory" ],
+        "summary" : "upload translation memory",
+        "description" : "",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string",
+          "description" : "API Key"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/empty object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/tms/segments/list" : {
+      "get" : {
+        "tags" : [ "Translation Memory" ],
+        "summary" : "list tm segments",
+        "description" : "",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "tmId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/tms/segments/add" : {
+      "post" : {
+        "tags" : [ "Translation Memory" ],
+        "summary" : "add tm segment",
+        "description" : "",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/empty object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/tms/segments/update" : {
+      "put" : {
+        "tags" : [ "Translation Memory" ],
+        "summary" : "update tm segment",
+        "description" : "",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "tmId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "segmentId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/empty object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/tms/segments/delete" : {
+      "delete" : {
+        "tags" : [ "Translation Memory" ],
+        "summary" : "delete tm segment",
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "tmId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "segmentId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/glossaries/list" : {
+      "get" : {
+        "tags" : [ "Glossary" ],
+        "summary" : "list glossaries",
+        "description" : "Return all glossaries (or match optional search, limit, offset, etc. ) with links for downloading the glossary files and metadata by glossary",
+        "parameters" : [ {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "language",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/glossaries/show" : {
+      "get" : {
+        "tags" : [ "Glossary" ],
+        "summary" : "show glossary",
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "search",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "glossaryId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/glossaries/upload" : {
+      "post" : {
+        "tags" : [ "Glossary" ],
+        "summary" : "upload glossary",
+        "description" : "",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/empty object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/glossaries/terms/add" : {
+      "post" : {
+        "tags" : [ "Glossary" ],
+        "summary" : "add glossary term",
+        "description" : "",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "consumerKey",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "organizationId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "glossaryId",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/empty object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "empty object" : {
+      "type" : "object"
+    },
+    "OK" : {
+      "type" : "object",
+      "required" : [ "Status" ],
+      "properties" : {
+        "Status" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
